@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Something for You 🎁</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #000;
+    }
+    #giftBox img {
+      width: 200px;
+      cursor: pointer;
+    }
+    .openGift {
+      animation: shake 0.5s ease-in-out, explode 0.8s ease forwards;
+    }
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      20% { transform: rotate(-10deg); }
+      40% { transform: rotate(10deg); }
+      60% { transform: rotate(-6deg); }
+      80% { transform: rotate(6deg); }
+    }
+    @keyframes explode {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(3); }
+    }
+  </style>
+</head>
+<body>
+  <div id="giftBox">
+    <img src="./images/real2.png" alt="Gift Box">
+  </div>
+
+  <script>
+  const gift = document.querySelector("#giftBox");
+  gift.addEventListener("click", () => {
+    gift.classList.add("openGift");
+
+    // ✅ Allow audio on next page
+    localStorage.setItem("audioAllowed", "yes");
+
+    setTimeout(() => {
+      window.location.href = "main.html"; // redirect after animation
+    }, 1300);
+  });
+</script>
+
+</body>
+</html>
